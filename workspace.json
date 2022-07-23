@@ -2,6 +2,8 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "shared-ui": "libs/shared/ui",
+    "shared-ui-e2e": "apps/shared-ui-e2e",
     "va": "apps/va",
     "va-e2e": "apps/va-e2e"
   }
