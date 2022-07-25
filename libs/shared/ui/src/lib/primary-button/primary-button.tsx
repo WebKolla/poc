@@ -3,14 +3,14 @@ import styled from '@emotion/styled';
 /* eslint-disable-next-line */
 export interface PrimaryButtonProps {}
 
-const StyledPrimaryButton = styled.div`
+const StyledPrimaryButton = styled.button`
   color: pink;
 `;
 
 export function PrimaryButton(props: PrimaryButtonProps) {
   return (
     <StyledPrimaryButton>
-      <h1>Welcome to PrimaryButton!</h1>
+      Button
     </StyledPrimaryButton>
   );
 }
