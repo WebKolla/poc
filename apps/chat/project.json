@@ -1,0 +1,67 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/chat/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/chat",
+        "compiler": "babel",
+        "index": "apps/chat/src/index.html",
+        "baseHref": "/",
+        "main": "apps/chat/src/main.ts",
+        "polyfills": "apps/chat/src/polyfills.ts",
+        "tsConfig": "apps/chat/tsconfig.app.json",
+        "assets": ["apps/chat/src/favicon.ico", "apps/chat/src/assets"],
+        "styles": ["apps/chat/src/styles.styl"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/chat/src/environments/environment.ts",
+              "with": "apps/chat/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "chat:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "chat:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/chat/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/chat"],
+      "options": {
+        "jestConfig": "apps/chat/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

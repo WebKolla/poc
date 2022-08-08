@@ -15,21 +15,14 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ],
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
         "accessToken": "MzhmNzZjNzEtNDUyNS00NjRhLTk3MWUtN2M3MzU0YzU0YjU0fHJlYWQtd3JpdGU="
       }
     }
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ]
+      "dependsOn": ["^build"]
     }
   },
   "generators": {
@@ -43,6 +36,17 @@
         "style": "@emotion/styled",
         "linter": "eslint"
       }
+    },
+    "@nrwl/web:application": {
+      "style": "styl",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/web:library": {
+      "style": "styl",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
     }
   },
   "defaultProject": "va"
